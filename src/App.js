@@ -1,58 +1,106 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+import {authentication, provider} from './firebase'
+import { useEffect, useState } from "react";
+import {useDispatch, useSelector} from 'react-redux'
+import { getAuth, 
+  signOut,
+  signInWithPopup,
+   createUserWithEmailAndPassword,
+  GoogleAuthProvider } from "firebase/auth";
+import {setActiveUser, 
+setUserLogOutState, 
+selectUserEmail, 
+selectUserName}
+from './features/userSlice'
+import { Button, Text, Flex, Center, Square, Box }  from '@chakra-ui/react';
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  const userName = useSelector(selectUserName)
+  const userEmail = useSelector(selectUserEmail)
+  const [word, setWord] = useState("nachos");
+
+  
+  useEffect(() => {
+   
+
+
+  }, []);
+
+const handleSignIn = () =>{
+
+  const auth = getAuth();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      console.log("here",result)
+      dispatch(setActiveUser({
+        userName : result.user.displayName,
+        userEmail : result.user.email
+      }))
+      // ...
+    }).catch((error) => {
+      console.log(error)
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+
+}
+
+const handleSignOut = () =>{
+  const auth = getAuth();
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    dispatch(setUserLogOutState())
+  }).catch((error) => {
+    // An error happened.
+    console.log(error)
+  });
+}
+
+// 
+
+
+
+// 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+     {/* spacer div */}
+
+  <Text color={"black"}>Chris is a tech professional</Text>
+    <Box height={"200px"}></Box>
+        <div className='signin'>
+        {userName ? 
+          <Button _hover={{ bg: '#1a68b0', color:"white" }}onClick={handleSignOut} >Sign Out</Button>
+        :
+        <Button _hover={{ bg: '#1a68b0', color:"white" }}onClick={handleSignIn} >Client Sign In</Button>
+        }
+        </div>
+        <div className='resume'>
+        <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={()=>{}} >Resume</Button>
+        </div>
       </header>
     </div>
+
+    
   );
+
+
 }
 
 export default App;
