@@ -23,12 +23,16 @@ function App() {
   const userName = useSelector(selectUserName)
   const userEmail = useSelector(selectUserEmail)
   const [word, setWord] = useState("nachos");
-
   
+  const resume = "https://drive.google.com/file/d/1BXNUbLkthJwQMpcgyiuSv5f4O41b_Jyu/view?usp=sharing"
+  
+  const serveResume = () => {
+    console.log("linking resume")
+  }
+
+
   useEffect(() => {
    
-
-
   }, []);
 
 const handleSignIn = () =>{
@@ -82,7 +86,8 @@ const handleSignOut = () =>{
       <header className="App-header">
      {/* spacer div */}
 
-  <Text color={"black"}>Chris is a tech professional</Text>
+  <Text color={"black"}>Chris</Text>
+  <Text color={"black"}>Professional Technologist</Text>
     <Box height={"200px"}></Box>
         <div className='signin'>
         {userName ? 
@@ -92,7 +97,9 @@ const handleSignOut = () =>{
         }
         </div>
         <div className='resume'>
-        <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={()=>{}} >Resume</Button>
+        <a href={resume} target={"1"}>
+        <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={serveResume} >Resume</Button>
+        </a>
         </div>
       </header>
     </div>

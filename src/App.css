@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  /* font-weight: 300; */
 }
 
 .App-logo {
@@ -19,7 +21,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(20px + 2vmin);
   /* The image used */
   background-image: url(../public/chriswebsite3.png);
 
@@ -60,7 +62,7 @@
   right: 70px;
 }
 
-.resume{
+.resume {
   position: absolute;
   top: 100px;
   left: 70px;
