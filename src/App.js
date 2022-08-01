@@ -4,6 +4,7 @@ import './App.css';
 import {authentication, provider} from './firebase'
 import { useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
+import { MdCheckCircle } from "react-icons/md";
 import { getAuth, 
   signOut,
   signInWithPopup,
@@ -14,7 +15,13 @@ setUserLogOutState,
 selectUserEmail, 
 selectUserName}
 from './features/userSlice'
-import { Button, Text, Flex, Center, Square, Box }  from '@chakra-ui/react';
+import { Button, Text, Flex, Center, Square, Box, VStack, List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  Heading,
+  UnorderedList,}  from '@chakra-ui/react';
+import { motion } from "framer-motion"
 
 function App() {
 
@@ -22,6 +29,7 @@ function App() {
 
   const userName = useSelector(selectUserName)
   const userEmail = useSelector(selectUserEmail)
+
   const [word, setWord] = useState("nachos");
   
   const resume = "https://drive.google.com/file/d/1BXNUbLkthJwQMpcgyiuSv5f4O41b_Jyu/view?usp=sharing"
@@ -79,29 +87,53 @@ const handleSignOut = () =>{
 // 
 
 
-
 // 
   return (
     <div className="App">
-      <header className="App-header">
+  
+    {/* <Box className='overlay'></Box> */}
+
+    <Box className='overlay2'></Box>
+      <Box className="App-header" backgroundImage={{md: "'url(../public/chriswebsite5.png)'" }}>
      {/* spacer div */}
 
-  <Text color={"black"}>Chris</Text>
-  <Text color={"black"}>Professional Technologist</Text>
-    <Box height={"200px"}></Box>
-        <div className='signin'>
+  <Box display={{ md: 'flex'}} className='message'>
+  <Box width={"500px"}>
+  </Box>
+  <Box>
+  <VStack padding={"50px"} >
+
+  <Heading as='h1'>Chris Pro:</Heading>
+  <List>
+  <ListItem><ListIcon as={MdCheckCircle} color='green.500' /> Web2/3 Developer</ListItem>
+  <ListItem><ListIcon as={MdCheckCircle} color='green.500' />Blockchain Builder</ListItem>
+  <ListItem><ListIcon as={MdCheckCircle} color='green.500' />System Architect</ListItem>
+  <ListItem><ListIcon as={MdCheckCircle} color='green.500' />Technical Writer</ListItem>
+</List>
+
+
+  </VStack>
+  </Box>
+  </Box>
+    <Box height={{base: "300px",md: "100px" }}></Box>
+        
         {userName ? 
-          <Button _hover={{ bg: '#1a68b0', color:"white" }}onClick={handleSignOut} >Sign Out</Button>
+        <Box className='signin' right={{md: "70px", base: "10px"}}>
+          <Text fontSize={{base:"16px", md:"25px"}} color={"black"}>Hello! {userName}</Text>
+          <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={handleSignOut} >Sign Out</Button>
+          </Box>
         :
-        <Button _hover={{ bg: '#1a68b0', color:"white" }}onClick={handleSignIn} >Client Sign In</Button>
+        <Box className='signin' right={{md: "70px", base: "10px"}}>
+        <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={handleSignIn} >Client Sign In</Button>
+        </Box>
         }
-        </div>
-        <div className='resume'>
+       
+        <Box left={{md: "70px", base: "10px"}} className='resume'>
         <a href={resume} target={"1"}>
-        <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={serveResume} >Resume</Button>
+        <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={serveResume} >Chris' Resume</Button>
         </a>
-        </div>
-      </header>
+        </Box>
+      </Box>
     </div>
 
     

@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  position: relative;
+  overflow: hidden;
   /* font-weight: 300; */
 }
 
@@ -23,7 +25,7 @@
   justify-content: center;
   font-size: calc(20px + 2vmin);
   /* The image used */
-  background-image: url(../public/chriswebsite3.png);
+  background-image: url(../public/chriswebsite4.png);
 
   /* Full height */
   height: 100%; 
@@ -33,7 +35,6 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  
 }
 
 .App-link {
@@ -59,13 +60,66 @@
 .signin {
   position: absolute;
   bottom: 100px;
-  right: 70px;
+
 }
 
 .resume {
   position: absolute;
+  bottom: 100px;
+
+}
+.message{
+  font-weight: bold ;
+  width: 90%;
+
+}
+.hello{
+  font-weight: bold ;
+  -webkit-text-stroke: 2px black;
+  position: absolute;
   top: 100px;
-  left: 70px;
+  left: 10px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 120%;
+  background: url("../public/fogy5.png") repeat;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: shake 2s;
+  animation-iteration-count: infinite;
+}
+.overlay2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 120%;
+  background: url("../public/fogy5.png") repeat;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: shake2 10s;
+  animation-iteration-count: infinite;
+}
+
+
+
+@keyframes shake {
+  0% { transform: translate(0px, 0px)  }
+  50% { transform: translate(10px, 0px) }
+  100% { transform: translate(0px, 0px)  }
+}
+
+@keyframes shake2 {
+  0% { transform: translate(0px, 0px)  }
+  50% { transform: translate(-50px, 0px) }
+  100% { transform: translate(0px, 0px)  }
 }
 /* /////////////////////////////// */
 
