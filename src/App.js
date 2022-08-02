@@ -98,24 +98,23 @@ const handleSignOut = () =>{
      {/* spacer div */}
 
   <Box display={{ md: 'flex'}} className='message'>
-  <Box width={"500px"}>
+  <Box width={{base:"0px", md:"400px", lg:"600px", xl:"800px"}}>
   </Box>
   <Box>
-  <VStack padding={"50px"} >
+  <VStack padding={"0px"} >
 
   <Heading as='h1'>Chris Pro:</Heading>
   <List>
-  <ListItem><ListIcon as={MdCheckCircle} color='green.500' /> Web2/3 Developer</ListItem>
-  <ListItem><ListIcon as={MdCheckCircle} color='green.500' />Blockchain Builder</ListItem>
-  <ListItem><ListIcon as={MdCheckCircle} color='green.500' />System Architect</ListItem>
-  <ListItem><ListIcon as={MdCheckCircle} color='green.500' />Technical Writer</ListItem>
+  <ListItem><ListIcon as={MdCheckCircle} color='#259c9a' /> Web2/3 Developer</ListItem>
+  <ListItem><ListIcon as={MdCheckCircle} color='#259c9a' />System Architect</ListItem>
+  <ListItem><ListIcon as={MdCheckCircle} color='#259c9a' />Technical Writer</ListItem>
 </List>
 
 
   </VStack>
   </Box>
   </Box>
-    <Box height={{base: "300px",md: "100px" }}></Box>
+    <Box height={{base: "200px",md: "100px" }}></Box>
         
         {userName ? 
         <Box className='signin' right={{md: "70px", base: "10px"}}>
@@ -123,12 +122,12 @@ const handleSignOut = () =>{
           <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={handleSignOut} >Sign Out</Button>
           </Box>
         :
-        <Box className='signin' right={{md: "70px", base: "10px"}}>
-        <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={handleSignIn} >Client Sign In</Button>
+        <Box bottom={{md:"420px", base:"150px"}} className='signin' left={{md: "220px", lg:"300px", base: "auto"}}>
+        <Button className='main' color="black" _hover={{ bg: '#1a68b0', color:"white", transform: "5px"}} onClick={handleSignIn} >Client Sign In</Button>
         </Box>
         }
        
-        <Box left={{md: "70px", base: "10px"}} className='resume'>
+        <Box bottom={{md:"500px", base:"250px"}} left={{md: "220px",  lg:"300px",  base: "auto"}} className='resume'>
         <a href={resume} target={"1"}>
         <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={serveResume} >Chris' Resume</Button>
         </a>
