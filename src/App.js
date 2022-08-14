@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import LoadingScreen from './LoadingScreen';
 import {provider} from './firebase'
 import { useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
@@ -38,10 +39,12 @@ function App() {
     console.log("linking resume")
   }
 
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-   
-  }, []);
+    setTimeout(() => setLoading(false), 2000)
+  }, [])
+
 
 const handleSignIn = () =>{
 
@@ -89,8 +92,10 @@ const handleSignOut = () =>{
 
 // 
   return (
+    <>
+    {loading === false ? (
     <div className="App">
-  
+
     {/* <Box className='overlay'></Box> */}
 
     <Box className='overlay2'></Box>
@@ -117,7 +122,7 @@ const handleSignOut = () =>{
   </Box>
   </Box>
   {userName ? <Text fontSize={{base:"20px", md:"25px"}} color={"white"}
-  top={{md:"50px", base:"10px"}} className='signin' left={{base: "20px"}}
+  top={{md:"10px", base:"10px"}} className='signin' left={{base: "20px"}}
   >Hello! {userName}</Text> : null }
   <Box top ={{base:"10px"}} right={{md: "125", base:"50px"}} className='resume'>
         <a href={github} target={"2"}>
@@ -125,7 +130,7 @@ const handleSignOut = () =>{
         </a>
   </Box>
   <Box top ={{base:"10px"}} right={{md: "175",base:"100px"}} className='resume'>
-        <a href={linkedin} target={"2"}>
+        <a href={linkedin} target={"3"}>
         <Image boxSize={{md:"35px", base:"30px"}} src='/linkedin_logo_2.png' alt="linkedin"></Image>
         </a>
   </Box>
@@ -151,8 +156,11 @@ const handleSignOut = () =>{
       
       </Box>
     </div>
+    ) : (
+      <LoadingScreen />
+    )}
 
-    
+    </>
   );
 
 
