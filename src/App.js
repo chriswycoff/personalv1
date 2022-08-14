@@ -1,39 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {authentication, provider} from './firebase'
+import {provider} from './firebase'
 import { useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import { MdCheckCircle } from "react-icons/md";
 import { getAuth, 
   signOut,
   signInWithPopup,
-   createUserWithEmailAndPassword,
   GoogleAuthProvider } from "firebase/auth";
 import {setActiveUser, 
 setUserLogOutState, 
 selectUserEmail, 
 selectUserName}
 from './features/userSlice'
-import { Button, Text, Flex, Center, Square, Box, VStack, List,
+import { Button, Text, Box, VStack, List, Image,
   ListItem,
   ListIcon,
-  OrderedList,
+  
   Heading,
-  UnorderedList,}  from '@chakra-ui/react';
-import { motion } from "framer-motion"
+  }  from '@chakra-ui/react';
+
 
 function App() {
 
   const dispatch = useDispatch()
 
   const userName = useSelector(selectUserName)
-  const userEmail = useSelector(selectUserEmail)
+  // const userEmail = useSelector(selectUserEmail)
 
-  const [word, setWord] = useState("nachos");
+  // const [word, setWord] = useState("nachos");
   
-  const resume = "https://drive.google.com/file/d/1BXNUbLkthJwQMpcgyiuSv5f4O41b_Jyu/view?usp=sharing"
-  
+  const resume = "https://drive.google.com/file/d/1UyDOhvKPA8eqceGyNiOU4dPSmsyvMgeQ/view?usp=sharing"
+  const github = "https://github.com/chriswycoff"
+  const linkedin = "https://www.linkedin.com/in/christopherwycoff/"
+
   const serveResume = () => {
     console.log("linking resume")
   }
@@ -94,44 +94,61 @@ const handleSignOut = () =>{
     {/* <Box className='overlay'></Box> */}
 
     <Box className='overlay2'></Box>
-      <Box className="App-header" backgroundImage={{md: "'url(../public/chriswebsite5.png)'" }}>
+      <Box className="App-header" backgroundImage={{md: "'url(../public/chriswebsite6.png)'" }}>
      {/* spacer div */}
 
-  <Box display={{ md: 'flex'}} className='message'>
+  <Box display={{ md: 'flex'}} className='message' marginBottom={"40px"}>
   <Box width={{base:"0px", md:"400px", lg:"600px", xl:"800px"}}>
   </Box>
   <Box>
   <VStack padding={"0px"} >
 
-  <Heading as='h1'>Chris Pro:</Heading>
+  <Heading color={"white"} as='h1'><span style={{ color: '#00FFFF'}}>Pro</span>fessional Software Engineer</Heading>
+  <Heading color={"white"} as='h1'><span style={{ color: '#00FFFF'}}>Chris</span> Wycoff</Heading>
+  <br></br>
   <List>
-  <ListItem><ListIcon as={MdCheckCircle} color='#259c9a' /> Web2/3 Developer</ListItem>
-  <ListItem><ListIcon as={MdCheckCircle} color='#259c9a' />System Architect</ListItem>
-  <ListItem><ListIcon as={MdCheckCircle} color='#259c9a' />Technical Writer</ListItem>
+  <ListItem color={"white"}><ListIcon as={MdCheckCircle} color='#00FFFF' /> Web2/3 Developer</ListItem>
+  <ListItem color={"white"}><ListIcon as={MdCheckCircle} color='#00FFFF' />System Architect</ListItem>
+  <ListItem color={"white"}><ListIcon as={MdCheckCircle} color='#00FFFF' />Technical Writer</ListItem>
 </List>
 
 
   </VStack>
   </Box>
   </Box>
+  {userName ? <Text fontSize={{base:"20px", md:"25px"}} color={"white"}
+  top={{md:"50px", base:"10px"}} className='signin' left={{base: "20px"}}
+  >Hello! {userName}</Text> : null }
+  <Box top ={{base:"10px"}} right={{md: "125", base:"50px"}} className='resume'>
+        <a href={github} target={"2"}>
+        <Image boxSize={{md:"35px", base:"30px"}} src='/github_logo.png' alt="github"></Image>
+        </a>
+  </Box>
+  <Box top ={{base:"10px"}} right={{md: "175",base:"100px"}} className='resume'>
+        <a href={linkedin} target={"2"}>
+        <Image boxSize={{md:"35px", base:"30px"}} src='/linkedin_logo_2.png' alt="linkedin"></Image>
+        </a>
+  </Box>
+
     <Box height={{base: "200px",md: "100px" }}></Box>
-        
+      <Box bottom={{md:"60%", base:"250px"}} left={{md: "220px",  lg:"300px",  base: "auto"}} className='resume'>
+          <a href={resume} target={"1"}>
+          <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={serveResume} >Chris' Resume</Button>
+          </a>
+      </Box>
+
         {userName ? 
-        <Box className='signin' right={{md: "70px", base: "10px"}}>
-          <Text fontSize={{base:"16px", md:"25px"}} color={"black"}>Hello! {userName}</Text>
+        
+        <Box bottom={{md:"50%", base:"150px"}} className='signin' left={{md: "220px", lg:"300px", base: "auto"}}>
+
           <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={handleSignOut} >Sign Out</Button>
           </Box>
         :
-        <Box bottom={{md:"420px", base:"150px"}} className='signin' left={{md: "220px", lg:"300px", base: "auto"}}>
-        <Button className='main' color="black" _hover={{ bg: '#1a68b0', color:"white", transform: "5px"}} onClick={handleSignIn} >Client Sign In</Button>
+        <Box bottom={{md:"50%", base:"150px"}} className='signin' left={{md: "220px", lg:"300px", base: "auto"}}>
+        <Button className='main' _hover={{ bg: '#1a68b0', color:"white", transform: "5px"}} onClick={handleSignIn} >Client Sign In</Button>
         </Box>
         }
-       
-        <Box bottom={{md:"500px", base:"250px"}} left={{md: "220px",  lg:"300px",  base: "auto"}} className='resume'>
-        <a href={resume} target={"1"}>
-        <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={serveResume} >Chris' Resume</Button>
-        </a>
-        </Box>
+      
       </Box>
     </div>
 
