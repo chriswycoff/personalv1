@@ -135,21 +135,29 @@ const handleSignOut = () =>{
         </a>
   </Box>
 
-    <Box height={{base: "200px",md: "100px" }}></Box>
-      <Box bottom={{md:"60%", base:"250px"}} left={{md: "220px",  lg:"300px",  base: "auto"}} className='resume'>
+    <Box height={{base: "50px",md: "100px" }}></Box>
+      <Box bottom={{md:"60%", base:"140px"}} left={{md: "220px",  lg:"300px",  base: "auto"}} className='resume'>
+      
           <a href={resume} target={"1"}>
           <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={serveResume} >Chris' Resume</Button>
           </a>
       </Box>
+    <Box bottom={{md:"50%", base:"80px"}} left={{md: "220px",  lg:"300px",  base: "auto"}} className='resume'>
+      
+      <a href={resume} target={"1"}>
+      <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={serveResume} >See This Page's Code!</Button>
+      </a>
+  </Box>
 
         {userName ? 
         
-        <Box bottom={{md:"50%", base:"150px"}} className='signin' left={{md: "220px", lg:"300px", base: "auto"}}>
-
-          <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={handleSignOut} >Sign Out</Button>
+          <Box left={{base:"20px", md:"25px"}} 
+  top={{md:"40px", base:"40px"}} className='resume'>
+          <Button size={"sm"} _hover={{ bg: '#1a68b0', color:"white" }} onClick={handleSignOut} >Sign Out</Button>
           </Box>
         :
-        <Box bottom={{md:"50%", base:"150px"}} className='signin' left={{md: "220px", lg:"300px", base: "auto"}}>
+        <Box left={{base:"20px", md:"25px"}} 
+  top={{md:"10px", base:"10px"}} className='resume'>
         <Button className='main' _hover={{ bg: '#1a68b0', color:"white", transform: "5px"}} onClick={handleSignIn} >Client Sign In</Button>
         </Box>
         }
