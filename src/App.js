@@ -34,6 +34,7 @@ function App() {
   const resume = "https://drive.google.com/file/d/1UyDOhvKPA8eqceGyNiOU4dPSmsyvMgeQ/view?usp=sharing"
   const github = "https://github.com/chriswycoff"
   const linkedin = "https://www.linkedin.com/in/christopherwycoff/"
+  const code_link = "https://github.com/chriswycoff/personalv1"
 
   const serveResume = () => {
     console.log("linking resume")
@@ -144,8 +145,8 @@ const handleSignOut = () =>{
       </Box>
     <Box bottom={{md:"50%", base:"80px"}} left={{md: "220px",  lg:"300px",  base: "auto"}} className='resume'>
       
-      <a href={resume} target={"1"}>
-      <Button _hover={{ bg: '#1a68b0', color:"white" }} onClick={serveResume} >See This Page's Code!</Button>
+      <a href={code_link} target={"5"}>
+      <Button _hover={{ bg: '#1a68b0', color:"white" }} >See This Page's Code!</Button>
       </a>
   </Box>
 
